@@ -185,6 +185,9 @@ struct HashTree {
 
     //добавление элемента в множество
     void add(int data) {
+        if (contains(data)) {
+            return;
+        }
         int index = hashFunction(data);
         Tree* temp = table[index];
         if (temp == nullptr) {
@@ -196,6 +199,9 @@ struct HashTree {
 
     //удаление элемента из множества
     void remove(int data) {
+        if (!contains(data)) {
+            return;
+        }
         int index = hashFunction(data);
         if (table[index] == nullptr) {
             return;
